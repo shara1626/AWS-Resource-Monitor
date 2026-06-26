@@ -1,0 +1,10 @@
+flask          # Flask is our web server framework
+               # It handles routing (/, /config, etc)
+               # Like Express does in Node.js
+
+boto3          # Official AWS Python library
+               # lets python talk to AWS services 
+
+python-dotenv  # Reads our .env file
+               # So we can use secret keys without
+               # hardcoding them in our code

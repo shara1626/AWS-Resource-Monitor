@@ -1,0 +1,12 @@
+services:
+  aws-monitor:
+    build: .
+    container_name: aws-resource-monitor
+
+    ports:
+      - "3000:3000"
+
+    env_file:
+      - .env
+
+    restart: unless-stopped

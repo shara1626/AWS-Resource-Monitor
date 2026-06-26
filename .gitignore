@@ -1,0 +1,24 @@
+# Environmental variables (never commit secrets)              
+# If pushed, anyone can steal your keys
+.env
+
+__pycache__/    
+# Python auto-generates these files
+# They are compiled versions of your code
+# Not needed by others - regenerated automatically
+
+*.pyc           
+# Another type of Python compiled file
+# .pyc = Python compiled file
+# Same reason - auto-generated, not needed
+
+.DS_Store       
+# Mac automatically creates this file
+# It stores folder display preferences
+# Useless to other developers
+
+venv/           
+# Virtual environment folder
+# Contains installed libraries
+# Very large folder - others install their own
+# using requirements.txt
