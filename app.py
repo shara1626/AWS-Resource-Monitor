@@ -11,7 +11,7 @@ import os
 # WHY: load_dotenv reads our .env file
 from dotenv import load_dotenv
 
-# WHY: Load .env variables into memory
+# WHY: This will reads the .env file
 load_dotenv()
 
 # WHY: Create Flask app
@@ -24,6 +24,16 @@ session = boto3.Session(
     aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
     region_name=os.getenv("AWS_REGION")
 )
+@app.route("/test")
+def test():
+    sts = session.client("sts")
+    identity = sts.get_caller_identity()
+
+    return {
+        "Account": identity["Account"],
+        "Arn": identity["Arn"],
+        "UserId": identity["UserId"]
+    }
 
 # ─────────────────────────────────────
 # FUNCTION: Get EC2 Instances
