@@ -16,6 +16,7 @@ load_dotenv()
 
 # WHY: Create Flask app
 app = Flask(__name__)
+print("Testing")
 
 # WHY: Create AWS session using our credentials
 # This authenticates all our AWS API calls

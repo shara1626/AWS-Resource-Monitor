@@ -104,42 +104,48 @@
     <!-- WHY: Shows total count of each resource at a glance -->
     <div class="summary">
         <div class="card">
-            <h2>{{ ec2_count }}</h2>
+            <h2 id="ec2-count">{{ ec2_count }}</h2>
             <p>EC2 Instances</p>
         </div>
         <div class="card">
-            <h2>{{ s3_count }}</h2>
+            <h2 id="s3-count">{{ s3_count }}</h2>
             <p>S3 Buckets</p>
         </div>
         <div class="card">
-            <h2>{{ rds_count }}</h2>
+            <h2 id="rds-count">{{ rds_count }}</h2>
             <p>RDS Databases</p>
         </div>
         <div class="card">
-            <h2>{{ lambda_count }}</h2>
+            <h2 id="lambda-count">{{ lambda_count }}</h2>
             <p>Lambda Functions</p>
         </div>
     </div>
 
     <!-- EC2 INSTANCES -->
     <div class="section">
-        <h3>⚡ EC2 Instances</h3>
+        <h3> EC2 Instances</h3>
         {% if ec2_instances %}
         <table>
+          <thead>
             <tr>
                 <th>Instance ID</th>
                 <th>Type</th>
                 <th>State</th>
                 <th>Public IP</th>
+		<th>Region</th>
             </tr>
+           </thead>
+ 		<tbody id="ec2-table-body">
             {% for instance in ec2_instances %}
             <tr>
                 <td>{{ instance.id }}</td>
                 <td>{{ instance.type }}</td>
                 <td class="{{ instance.state }}">{{ instance.state }}</td>
                 <td>{{ instance.public_ip }}</td>
+		<td>{{ instance.region }}</td>
             </tr>
             {% endfor %}
+	</tbody>
         </table>
         {% else %}
         <p class="no-data">No EC2 instances found</p>
@@ -216,6 +222,8 @@
         <p class="no-data">No Lambda functions found</p>
         {% endif %}
     </div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
 </html>
